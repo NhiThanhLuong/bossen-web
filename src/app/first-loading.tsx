@@ -1,9 +1,16 @@
 'use client';
 
-export default function Home() {
+import { Box, Button } from '@mui/material';
+import { AnimatePresence, motion } from 'framer-motion';
+import Image from 'next/image';
+import { FC, useState } from 'react';
+
+const FirstLoading: FC = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {/* <Button onClick={() => setIsVisible(!isVisible)}>Change</Button>
+      <Button onClick={() => setIsVisible(!isVisible)}>Change</Button>
       <AnimatePresence>
         {isVisible && (
           <Box
@@ -27,8 +34,9 @@ export default function Home() {
             />
           </Box>
         )}
-      </AnimatePresence> */}
-      haha
+      </AnimatePresence>
     </main>
   );
-}
+};
+
+export default FirstLoading;
