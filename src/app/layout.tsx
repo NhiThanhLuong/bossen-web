@@ -1,10 +1,15 @@
 import { Header } from '@/layouts';
-import { Metadata } from 'next';
 import ThemeProviderWrapper from '@/theme/theme-provider';
+import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import RootStyleRegistry from './emotion';
-import './globals.css';
 import FirstLoading from './first-loading';
+
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/bundle';
+import 'swiper/css/navigation';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
