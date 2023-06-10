@@ -3,7 +3,7 @@ import { FC } from 'react';
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import Image from 'next/image';
+import { CommonImage } from '@/components';
 
 SwiperCore.use([Autoplay]);
 
@@ -20,7 +20,7 @@ const ProductSlider: FC = () => {
   const theme = useTheme();
   return (
     <ContainerBox className="container py-16">
-      <Typography className="title" component="span" color="primary.main">
+      <Typography component="span" color="primary.main">
         Sản phẩm nổi bật
       </Typography>
 
@@ -48,7 +48,7 @@ const ProductSlider: FC = () => {
       >
         {items.concat(items).map((item) => (
           <SwiperSlide key={item}>
-            <Image src={item} alt="" priority width={900} height={900} />
+            <CommonImage src={item} alt="" priority width={900} height={900} />
 
             <Typography className="swiper-slide__title" color="primary.main">
               Best Cure - Xịt thảo
@@ -73,11 +73,6 @@ const ContainerBox = styled(Box)(({ theme }) => ({
 
   '.swiper-slide': {
     // textAlign: 'center',
-
-    img: {
-      width: '100%',
-      height: 'auto',
-    },
 
     '&__title': {
       fontSize: theme.typography.pxToRem(30),

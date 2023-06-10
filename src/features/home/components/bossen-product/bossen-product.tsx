@@ -1,5 +1,5 @@
+import { CommonImage } from '@/components';
 import { Box, Stack, Typography, styled } from '@mui/material';
-import Image from 'next/image';
 import { FC } from 'react';
 import PetStack from './pet-stack';
 
@@ -31,8 +31,7 @@ const BossenProduct: FC = () => {
           className="grid grid-cols-1 grid-rows-2 md:grid-cols-2 md:grid-rows-1"
           gap={2}
         >
-          <Image
-            className="main_image"
+          <CommonImage
             src="/home/img_4.png"
             alt=""
             priority
@@ -84,11 +83,6 @@ const ContainerBox = styled(Box)(({ theme }) => ({
         fontSize: theme.typography.pxToRem(28),
       },
     },
-  },
-
-  '.main_image': {
-    width: '100%',
-    height: 'auto',
   },
 
   '.box_1': {

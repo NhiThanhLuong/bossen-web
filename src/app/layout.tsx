@@ -9,7 +9,9 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/bundle';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import './globals.css';
+import Footer from './footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -38,6 +40,7 @@ export default function RootLayout({
             <Header />
             <FirstLoading />
             <main>{children}</main>
+            <Footer />
           </ThemeProviderWrapper>
         </RootStyleRegistry>
       </body>
