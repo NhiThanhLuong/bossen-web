@@ -4,6 +4,7 @@ import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { CommonImage } from '@/components';
+import HomeTypographyTitle from './home-typography/home-typography-title';
 
 SwiperCore.use([Autoplay]);
 
@@ -20,9 +21,7 @@ const ProductSlider: FC = () => {
   const theme = useTheme();
   return (
     <ContainerBox className="container py-16">
-      <Typography component="span" color="primary.main">
-        Sản phẩm nổi bật
-      </Typography>
+      <HomeTypographyTitle>Sản phẩm nổi bật</HomeTypographyTitle>
 
       <Swiper
         modules={[Autoplay]}

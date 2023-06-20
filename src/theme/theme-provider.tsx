@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import React, { FC, ReactNode } from "react";
-import { theme } from "./theme";
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { FC, ReactNode } from 'react';
+import { theme } from './theme';
 
 interface PropsType {
   children?: ReactNode;
@@ -11,8 +11,10 @@ interface PropsType {
 const ThemeProviderWrapper: FC<PropsType> = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
+      {/* <ParallaxProvider> */}
       <CssBaseline />
       {children}
+      {/* </ParallaxProvider> */}
     </ThemeProvider>
   );
 };

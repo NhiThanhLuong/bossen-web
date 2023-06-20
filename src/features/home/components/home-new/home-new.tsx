@@ -1,17 +1,15 @@
-import { theme } from '@/theme/theme';
-import { Box, SxProps, Theme, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { FC } from 'react';
 import SwiperCore, { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import HomeTypographyTitle from '../home-typography/home-typography-title';
 
 SwiperCore.use([Pagination]);
 
 const HomeNew: FC = () => {
   return (
     <Box className="container py-16">
-      <Typography component="span" color="primary.main" sx={styles.title}>
-        Tin tức
-      </Typography>
+      <HomeTypographyTitle>Tin tức</HomeTypographyTitle>
 
       <Swiper
         modules={[Pagination]}
@@ -25,15 +23,12 @@ const HomeNew: FC = () => {
         <SwiperSlide>A3</SwiperSlide>
         <SwiperSlide>A4</SwiperSlide>
       </Swiper>
+
+      <HomeTypographyTitle className="text-center">
+        “The Best Choice For Your Pets”
+      </HomeTypographyTitle>
     </Box>
   );
 };
 
 export default HomeNew;
-
-const styles: Record<string, SxProps<Theme> | undefined> = {
-  title: {
-    fontSize: theme.typography.pxToRem(39),
-    fontWeight: 500,
-  },
-};

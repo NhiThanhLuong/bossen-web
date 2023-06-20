@@ -10,6 +10,10 @@ declare module '@mui/material/styles' {
       text: string;
     };
   }
+
+  interface BreakpointOverrides {
+    '2xl': true;
+  }
 }
 
 export const theme = createTheme({
@@ -23,13 +27,19 @@ export const theme = createTheme({
     },
   },
 
-  typography: {
-    fontFamily:
-      '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;',
-  },
-  // breakpoints: {
-  //   values: {
+  // typography: {
+  //   fontFamily:
+  //     '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;',
+  // },
 
-  //   }
-  // }
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      '2xl': 1536,
+    },
+  },
 });

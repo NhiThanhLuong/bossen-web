@@ -1,7 +1,7 @@
 import { Header } from '@/layouts';
 import ThemeProviderWrapper from '@/theme/theme-provider';
 import { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import RootStyleRegistry from './emotion';
 import FirstLoading from './first-loading';
 
@@ -13,7 +13,10 @@ import 'swiper/css/pagination';
 import './globals.css';
 import Footer from './footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Roboto({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   title: 'Bossen',

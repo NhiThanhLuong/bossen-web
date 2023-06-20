@@ -2,8 +2,10 @@
 
 import { theme } from '@/theme/theme';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 import {
   AppBar,
+  AppBarProps,
   Container,
   IconButton,
   List,
@@ -12,75 +14,76 @@ import {
   SwipeableDrawer,
   SxProps,
   Toolbar,
+  styled,
+  useMediaQuery,
 } from '@mui/material';
+import Image from 'next/image';
 import { FC } from 'react';
 import { useToggle } from 'usehooks-ts';
 
 const Header: FC = () => {
   const [isOpenMenu, setToggle] = useToggle(false);
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  console.log(isDesktop);
 
   return (
-    // <AppBar position="fixed" sx={{ backgroundColor: '#fff' }}>
-    //   <Container maxWidth="xl">
-    //     <Toolbar
-    //       disableGutters
+    // <Toolbar
+    //   disableGutters
+    //   sx={{
+    //     display: 'flex',
+    //     justifyContent: 'space-between',
+    //   }}
+    // >
+    //   <Stack
+    //     component="a"
+    //     href="/"
+    //     sx={{
+    //       alignItems: 'center',
+    //       flexDirection: 'row',
+    //     }}
+    //   >
+    //     <Image
+    //       alt="Logo"
+    //       src="/logo.svg"
+    //       width={60}
+    //       height={0}
+    //       style={{ height: 'auto' }}
+    //     />
+    //     {/* <Typography
+    //       variant="h5"
     //       sx={{
-    //         display: 'flex',
-    //         justifyContent: 'space-between',
+    //         ml: 2,
+    //         color: 'white',
+    //         fontWeight: 700,
     //       }}
     //     >
-    //       <Stack
-    //         component="a"
-    //         href="/"
-    //         sx={{
-    //           alignItems: 'center',
-    //           flexDirection: 'row',
-    //         }}
-    //       >
-    //         <Image
-    //           alt="Logo"
-    //           src="/logo.svg"
-    //           width={60}
-    //           height={0}
-    //           style={{ height: 'auto' }}
-    //         />
-    //         {/* <Typography
-    //           variant="h5"
-    //           sx={{
-    //             ml: 2,
-    //             color: 'white',
-    //             fontWeight: 700,
-    //           }}
-    //         >
-    //           Admin Panel
-    //         </Typography> */}
-    //       </Stack>
-    //       <Stack
-    //         color="primary.main"
-    //         sx={{
-    //           flexDirection: 'row',
-    //           gap: 2,
-    //           fontWeight: 500,
-    //           fontSize: 24,
-    //         }}
-    //       >
-    //         <Typography>Giới thiệu</Typography>
-    //         <Typography>Sản phẩm</Typography>
-    //         <Typography>Hỏi chuyên gia</Typography>
-    //         <Typography>Thư viện</Typography>
-    //         <Typography>Liên hệ</Typography>
-    //       </Stack>
-    //       <Box>
-    //         <SettingsIcon />
-    //       </Box>
-    //     </Toolbar>
-    //   </Container>
-    // </AppBar>
-    <AppBar position="fixed" sx={styles.appBar}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+    //       Admin Panel
+    //     </Typography> */}
+    //   </Stack>
+    //   <Stack
+    //     color="primary.main"
+    //     sx={{
+    //       flexDirection: 'row',
+    //       gap: 2,
+    //       fontWeight: 500,
+    //       fontSize: 24,
+    //     }}
+    //   >
+    //     <Typography>Giới thiệu</Typography>
+    //     <Typography>Sản phẩm</Typography>
+    //     <Typography>Hỏi chuyên gia</Typography>
+    //     <Typography>Thư viện</Typography>
+    //     <Typography>Liên hệ</Typography>
+    //   </Stack>
+    //   <Box>
+    //     <SettingsInputComponent />
+    //   </Box>
+    // </Toolbar>
+
+    <AppBarStyle position="fixed" is_desktop={isDesktop ? 'true' : undefined}>
+      <Container maxWidth="2xl">
+        <Toolbar disableGutters sx={styles.mobileToolbar}>
           <IconButton
-            className="header__menu-icon"
             edge="start"
             size="large"
             aria-label="menu"
@@ -135,20 +138,28 @@ const Header: FC = () => {
             </List>
             {/* </Paper> */}
           </SwipeableDrawer>
+          <Image alt="Logo" src="/logo.svg" width={60} height={0} />
+          <IconButton edge="start" size="large" aria-label="search">
+            <SearchIcon
+              sx={{
+                color: 'white',
+              }}
+            />
+          </IconButton>
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBarStyle>
   );
 };
 
 export default Header;
 
-type SxStyles = Record<'appBar' | 'toolbar' | 'paperProps' | 'list', SxProps>;
+type SxStyles = Record<
+  'toolbar' | 'paperProps' | 'list' | 'mobileToolbar',
+  SxProps
+>;
 
 const styles: SxStyles = {
-  appBar: {
-    backgroundColor: theme.palette.primary.main,
-  },
   toolbar: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -165,4 +176,25 @@ const styles: SxStyles = {
       },
     },
   },
+  mobileToolbar: {
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'space-between',
+
+    img: {
+      height: 'auto',
+      position: 'absolute',
+      left: '50%',
+      bottom: 0,
+      transform: 'translate(-50%, 20%)',
+    },
+  },
 };
+
+const AppBarStyle = styled(AppBar)<
+  AppBarProps & {
+    is_desktop?: 'true';
+  }
+>(({ theme, is_desktop }) => ({
+  backgroundColor: is_desktop === 'true' ? 'white' : theme.palette.primary.main,
+}));

@@ -1,13 +1,22 @@
 'use client';
 
-import { Box, Grid, Typography, TypographyProps, styled } from '@mui/material';
+import { CommonImage } from '@/components';
+import {
+  Box,
+  Grid,
+  IconButton,
+  Typography,
+  TypographyProps,
+  styled,
+} from '@mui/material';
+import Image from 'next/image';
 import { FC } from 'react';
 
 const Footer: FC = () => {
   return (
     <Box bgcolor="myColor.main" className="w-full">
       <Box className="container py-16">
-        <Box className="grid md:grid-cols-2 ">
+        <Box className="grid gap-2 md:grid-cols-2">
           <Box>
             <TypographyTitle>Đường dây nóng</TypographyTitle>
 
@@ -40,13 +49,51 @@ const Footer: FC = () => {
               Kỹ thuật Thú y - Ths Nguyễn Thị Ánh Tuyết - 0918 724 625
             </TypographyDescription>
 
-            <Grid container>
+            <Grid container className="items-center">
               <Grid item xs={6}>
-                Group Icon
+                <Grid container>
+                  <Grid item xs={4}>
+                    <IconButton>
+                      <Image
+                        alt=""
+                        src="/icons/facebook.svg"
+                        width={60}
+                        height={60}
+                      />
+                    </IconButton>
+                  </Grid>
+
+                  <Grid item xs={4}>
+                    <IconButton>
+                      <Image
+                        alt=""
+                        src="/icons/youtube.svg"
+                        width={60}
+                        height={60}
+                      />
+                    </IconButton>
+                  </Grid>
+
+                  <Grid item xs={4}>
+                    <IconButton>
+                      <Image
+                        alt=""
+                        src="/icons/zalo.svg"
+                        width={60}
+                        height={60}
+                      />
+                    </IconButton>
+                  </Grid>
+                </Grid>
               </Grid>
 
               <Grid item xs={6}>
-                Da thong bao
+                <CommonImage
+                  src="/footer/mit.svg"
+                  alt="Đã thông báo Bộ Công Thương"
+                  width={290}
+                  height={114}
+                />
               </Grid>
             </Grid>
           </Box>
@@ -61,10 +108,20 @@ export default Footer;
 const TypographyTitle = styled((props: TypographyProps) => (
   <Typography color="primary.main" {...props} />
 ))(({ theme }) => ({
-  fontSize: theme.typography.pxToRem(14),
+  fontSize: theme.typography.pxToRem(16),
   fontWeight: 700,
+  lineHeight: 1,
 }));
 
 const TypographyDescription = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.pxToRem(10),
+  fontSize: theme.typography.pxToRem(12),
+  lineHeight: 1,
 }));
+
+// const SocialIconBox = styled((props: IconButtonProps) => (
+//   <Typography color="primary.main" {...props} />
+// ))(({ theme }) => ({
+//   height: 40,
+//   width: 40,
+//   borderRadius: 16
+// }));

@@ -25,8 +25,8 @@ const AnimatedImageItem: FC<Props> = ({
         transition={{
           repeat: Infinity,
           repeatType: 'mirror',
-          duration: 1.5,
-          delay: 0.5,
+          duration: 3,
+          delay: 0.3,
         }}
       >
         <Image src={src} alt="Image 1" priority width={1000} height={1000} />

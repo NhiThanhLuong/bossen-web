@@ -1,21 +1,15 @@
 import { CommonImage } from '@/components';
 import { theme } from '@/theme/theme';
-import { Box, Grid, SxProps, Theme, Typography } from '@mui/material';
+import { Box, Grid, SxProps, Theme } from '@mui/material';
 import { FC } from 'react';
+import HomeTypographyTitle from '../home-typography/home-typography-title';
 import AnimatedImages from './animated-images';
 
 const HomeLibrary: FC = () => {
   return (
     <Box bgcolor="myColor.main" className="w-full" sx={styles.container}>
       <Box className="container py-16">
-        <Typography
-          className="title"
-          component="span"
-          color="primary.main"
-          sx={styles.title}
-        >
-          Thư viện
-        </Typography>
+        <HomeTypographyTitle>Thư viện</HomeTypographyTitle>
         <Grid
           container
           spacing={{
@@ -53,9 +47,5 @@ const styles: Record<string, SxProps<Theme> | undefined> = {
     [theme.breakpoints.up('md')]: {
       paddingBottom: theme.typography.pxToRem(80),
     },
-  },
-  title: {
-    fontSize: theme.typography.pxToRem(39),
-    fontWeight: 500,
   },
 };
